@@ -1,0 +1,17 @@
+# 统一使用 LF 行尾符（跨平台兼容）
+* text=auto eol=lf
+
+# 确保脚本文件使用 LF
+*.py text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# 二进制文件
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+

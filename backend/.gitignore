@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 敏感配置文件（包含账号信息）
+business_gemini_session.json
+business_gemini_session.json.example
+*.json.bak
+
+# 数据库文件（包含敏感数据）
+*.db
+geminibusiness.db
+
+# 日志文件
+log/
+*.log
+
+# 缓存目录
+image/
+video/
+static/uploads/
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+# 保留示例文件
+!.env.example
+
+# Playwright
+.ms-playwright/
+
+# 临时文件
+*.tmp
+*.bak
+*.cache
+*.swp
+*.swo
+*~
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# Python 类型检查
+.mypy_cache/
+.pytype/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# 测试覆盖率
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 本地配置文件
+.env.local
+.env.*.local
+
+# 临时指南文件
+GITHUB_UPLOAD_GUIDE.md

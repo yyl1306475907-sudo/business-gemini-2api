@@ -1,0 +1,106 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 数据库文件（运行时通过卷挂载）
+*.db
+*.sqlite
+geminibusiness.db
+
+# 日志文件（运行时通过卷挂载）
+log/
+*.log
+
+# 缓存目录（运行时通过卷挂载）
+image/
+video/
+static/uploads/
+
+# 敏感配置文件
+business_gemini_session.json
+business_gemini_session.json.example
+*.json.bak
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 文档（运行时不需要）
+docs/
+*.md
+!README.md
+
+# Docker 相关
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# Playwright（容器内会重新安装）
+.ms-playwright/
+
+# 测试相关
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.pytype/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# 临时文件
+*.tmp
+*.bak
+*.cache
+
+# pyenv
+.python-version
+
+# Nginx 配置示例（运行时不需要）
+nginx.conf.example

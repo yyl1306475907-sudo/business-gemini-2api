@@ -1,0 +1,28 @@
+# Business Gemini OpenAPI Compatible Service Dependencies
+# Python 3.8+
+
+# Web Framework
+flask>=2.0.0
+flask-cors>=3.0.0
+
+# HTTP Requests
+requests>=2.25.0
+
+# SSL Warning Handling (requests dependency)
+urllib3>=1.26.0
+
+# Browser Automation (for automatic Cookie refresh)
+playwright>=1.40.0
+
+# Timezone data (required for zoneinfo on Windows)
+tzdata>=2024.1
+
+# Database ORM (for database storage support)
+sqlalchemy>=2.0.0
+
+# Encryption (for API key encryption)
+cryptography>=41.0.0
+
+# WebSocket support (for real-time communication)
+flask-socketio>=5.3.0
+python-socketio>=5.10.0

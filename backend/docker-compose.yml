@@ -1,0 +1,45 @@
+name: business-gemini-pool
+
+services:
+  app:
+    build: .
+    container_name: business-gemini-pool
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      # 持久化数据目录（包含数据库、图片、视频缓存）
+      - gemini-data:/app/data:rw
+      - ./log:/app/log:rw
+      # 可选：挂载 .env 文件（推荐）
+      # - ./.env:/app/.env:ro
+    user: "1000:1000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SERVER_PORT=8000
+      - SERVER_HOST=0.0.0.0
+      - DATA_DIR=/app/data
+      # 可选：设置 API 密钥加密密钥（32字节，生产环境建议设置）
+      # 推荐使用 .env 文件或环境变量文件
+      # - API_KEY_ENCRYPTION_KEY=your-32-byte-encryption-key-here!!
+      # 可选：设置管理员密钥（如果不设置，系统会自动生成）
+      # - ADMIN_SECRET_KEY=your-admin-secret-key-here
+    # 可选：使用 .env 文件（推荐）
+    # env_file:
+    #   - .env
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - gemini-network
+
+networks:
+  gemini-network:
+    driver: bridge
+
+volumes:
+  gemini-data:
+    driver: local
