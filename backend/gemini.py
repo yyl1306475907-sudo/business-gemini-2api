@@ -39,7 +39,10 @@ from app.auth import get_admin_secret_key
 from app.utils import check_proxy
 
 # 导入 Cookie 刷新（使用临时邮箱方式）
-from app.cookie_refresh import auto_refresh_expired_cookies_worker
+try:
+    from app.cookie_refresh import auto_refresh_expired_cookies_worker
+except Exception:
+    auto_refresh_expired_cookies_worker = None
 
 # 导入 WebSocket 管理器
 from app.websocket_manager import connection_manager, emit_system_log
@@ -183,7 +186,7 @@ if __name__ == '__main__':
     
     # 启动 Cookie 自动刷新后台线程（使用临时邮箱方式）
     auto_refresh_enabled = account_manager.config.get("auto_refresh_cookie", False)
-    if auto_refresh_enabled and PLAYWRIGHT_AVAILABLE:
+    if auto_refresh_enabled and PLAYWRIGHT_AVAILABLE and auto_refresh_expired_cookies_worker:
         # 将 headless/headed 参数传递给自动刷新线程
         import os
         if args.headless:
