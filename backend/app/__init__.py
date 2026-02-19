@@ -161,7 +161,10 @@ def init_app():
     # 启动定时健康检查（如果已启用）
     try:
         from .account_manager import account_manager
-        if account_manager.config.get("health_check_enabled", False):
+        # 确保配置已加载
+        if account_manager.config is None:
+            account_manager.load_config()
+        if account_manager.config and account_manager.config.get("health_check_enabled", False):
             from .account_health_check import start_health_check
             interval = account_manager.config.get("health_check_interval", 30)
             auto_delete = account_manager.config.get("health_check_auto_delete", False)
