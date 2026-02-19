@@ -65,8 +65,11 @@ from .media_handler import (
     extract_images_from_files_array
 )
 
-# 导入 Cookie 刷新
-from .cookie_refresh import auto_refresh_account_cookie
+# 导入 Cookie 刷新（可选）
+try:
+    from .cookie_refresh import auto_refresh_account_cookie
+except Exception:
+    auto_refresh_account_cookie = None
 
 # 导入 JWT 工具
 from .jwt_utils import get_jwt_for_account
@@ -1431,6 +1434,8 @@ def register_routes(app):
         acc = account_manager.accounts[account_id]
         
         if not data and PLAYWRIGHT_AVAILABLE:
+            if not auto_refresh_account_cookie:
+                return jsonify({"error": "自动刷新模块缺失，无法执行"}), 500
             print(f"[手动刷新] 尝试自动刷新账号 {account_id} 的 Cookie...")
             success = auto_refresh_account_cookie(account_id, acc)
             if success:
